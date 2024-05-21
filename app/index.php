@@ -299,21 +299,11 @@
                 <?php
                 $youngestPlayer = min($agePlayer1, $agePlayer2, $agePlayer3, $agePlayer4, $agePlayer5);
 
-                if ($youngestPlayer === $agePlayer1) {
-                    echo "<p>$namePlayer1 a $agePlayer1 ans. Il est donc le joueur le plus jeune.</p>";
-                }
-                if ($youngestPlayer === $agePlayer2) {
-                    echo "<p>$namePlayer2 a $agePlayer2 ans. Il est donc le joueur le plus jeune.</p>";
-                }
-                if ($youngestPlayer === $agePlayer3) {
-                    echo "<p>$namePlayer3 a $agePlayer3 ans. Il est donc le joueur le plus jeune.</p>";
-                }
-                if ($youngestPlayer === $agePlayer4) {
-                    echo "<p>$namePlayer4 a $agePlayer4 ans. Il est donc le joueur le plus jeune.</p>";
-                }
-                if ($youngestPlayer === $agePlayer5) {
-                    echo "<p>$namePlayer5 a $agePlayer5 ans. Il est donc le joueur le plus jeune.</p>";
-                }
+                foreach ($players as $player) {
+                    if ($youngestPlayer === $player['age']) {
+                        echo "<p>{$player['name']} a {$player['age']} ans. Il est donc le joueur le plus jeune.</p>";
+                    };
+                };
 
                 ?>
             </div>
