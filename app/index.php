@@ -35,9 +35,12 @@
                 <?php
                 $firstname = "Michel";
                 $score = 327;
-
+                // Bien...
                 echo "<p>$firstname a obtenu $score points à cette partie.</p>"
                 ?>
+                <!-- Mieux -->
+                <br>
+                <p><?= $firstname ?> a obtenu <?= $score ?> points à cette partie. </p>
             </div>
         </section>
 
@@ -55,12 +58,21 @@
                 $nameProduct3 = "potion";
                 $priceProduct3 = 5.20;
 
-                echo "<ul>
-               <li>Un $nameProduct1 coûte $priceProduct1 pièces d'or.</li>
-               <li>Une $nameProduct2 coûte $priceProduct2 pièces d'or.</li>
-               <li>Une $nameProduct3 coûte $priceProduct3 pièces d'or.</li>
-               </ul>"
+                //Bien dans le cas d'une boucle...
+                echo
+                "<ul>
+                   <li>Un $nameProduct1 coûte $priceProduct1 pièces d'or.</li>
+                   <li>Une $nameProduct2 coûte $priceProduct2 pièces d'or.</li>
+                   <li>Une $nameProduct3 coûte $priceProduct3 pièces d'or.</li>
+                   </ul>"
                 ?>
+                <br>
+                <!-- Mieux -->
+                <ul>
+                    <li>Un <?= $nameProduct1 ?> coûte <?= number_format($priceProduct1, 2) ?> pièces d'or.</li>
+                    <li>Une <?= $nameProduct2 ?> coûte <?= number_format($priceProduct2, 2) ?> pièces d'or.</li>
+                    <li>Une <?= $nameProduct3 ?> coûte <?= number_format($priceProduct3, 2) ?> pièces d'or.</li>
+                </ul>
             </div>
         </section>
 
@@ -78,9 +90,8 @@
 
                 $totalPrice = ($priceProduct1 * $quantityProduct1 + $priceProduct2 * $quantityProduct2 + $priceProduct3 * $quantityProduct3);
                 $totalPriceTaxed = $totalPrice * 0.9;
-
-                echo "La commande est de $totalPrice pièces d'or et de $totalPriceTaxed pièces d'or avec une remise de 10%.";
                 ?>
+                <p>La commande est de <?= number_format($totalPrice, 2) ?> pièces d'or et de <?= number_format($totalPriceTaxed, 2) ?> pièces d'or avec une remise de 10%.</p>
             </div>
         </section>
 
@@ -108,14 +119,19 @@
             <p class="exercice-txt">Affichez dans une liste HTML le nom des produits de la question 2 qui sont présents
                 dans la phrase : "<?= $text1 ?>"</p>
             <div class="exercice-sandbox">
-                <?php
-                if (str_contains($text1, $nameProduct1) & str_contains($text1, $nameProduct2)) {
-                    echo "<ul>
-                    <li>$nameProduct1</li>
-                    <li>$nameProduct2</li>
-                    </ul>";
-                }
-                ?>
+                <ul>
+                    <?php
+                    if (str_contains($text1, $nameProduct1)) {
+                        echo "<li>$nameProduct1</li>";
+                    }
+                    if (str_contains($text1, $nameProduct2)) {
+                        echo "<li>$nameProduct2</li>";
+                    }
+                    if (str_contains($text1, $nameProduct3)) {
+                        echo "<li>$nameProduct3</li>";
+                    }
+                    ?>
+                </ul>
             </div>
         </section>
 
@@ -125,38 +141,40 @@
             <p class="exercice-txt">Parmis les scores suivants, affichez le prénom des joueurs qui ont obtenus entre 50
                 et 150 points.</p>
             <div class="exercice-sandbox">
-                <?php
-                $namePlayer1 = "Tim";
-                $scorePlayer1 = 67;
-                $namePlayer2 = "Morgan";
-                $scorePlayer2 = 198;
-                $namePlayer3 = "Hamed";
-                $scorePlayer3 = 21;
-                $namePlayer4 = "Camille";
-                $scorePlayer4 = 134;
-                $namePlayer5 = "Kevin";
-                $scorePlayer5 = 103;
+                <ul>
+                    <?php
+                    $namePlayer1 = "Tim";
+                    $scorePlayer1 = 67;
+                    $namePlayer2 = "Morgan";
+                    $scorePlayer2 = 198;
+                    $namePlayer3 = "Hamed";
+                    $scorePlayer3 = 21;
+                    $namePlayer4 = "Camille";
+                    $scorePlayer4 = 134;
+                    $namePlayer5 = "Kevin";
+                    $scorePlayer5 = 103;
 
-                if ((50 <= $scorePlayer1) && ($scorePlayer1 <= 100)) {
-                    echo $namePlayer1;
-                }
+                    if (50 <= $scorePlayer1 && $scorePlayer1 <= 150) {
+                        echo "<li>$namePlayer1</li>";
+                    }
 
-                if ((50 <= $scorePlayer2) && ($scorePlayer2 <= 100)) {
-                    echo $namePlayer2;
-                }
+                    if (50 <= $scorePlayer2 && $scorePlayer2 <= 150) {
+                        echo "<li>$namePlayer2</li>";
+                    }
 
-                if ((50 <= $scorePlayer3) && ($scorePlayer3 <= 100)) {
-                    echo $namePlayer3;
-                }
+                    if (50 <= $scorePlayer3 && $scorePlayer3 <= 150) {
+                        echo "<li>$namePlayer3</li>";
+                    }
 
-                if ((50 <= $scorePlayer4) && ($scorePlayer4 <= 100)) {
-                    echo $namePlayer4;
-                }
+                    if (50 <= $scorePlayer4 && $scorePlayer4 <= 150) {
+                        echo "<li>$namePlayer4</li>";
+                    }
 
-                if ((50 <= $scorePlayer5) && ($scorePlayer5 <= 100)) {
-                    echo $namePlayer5;
-                }
-                ?>
+                    if (50 <= $scorePlayer5 && $scorePlayer5 <= 150) {
+                        echo "<li>$namePlayer5</li>";
+                    }
+                    ?>
+                </ul>
             </div>
         </section>
 
@@ -278,26 +296,26 @@
             <p class="exercice-txt">Afficher le prénom et l'âge du joueur le plus jeune dans une phrase dans une balise
                 HTML P.</p>
             <div class="exercice-sandbox">
-            <?php
-            $youngestPlayer = min($agePlayer1, $agePlayer2, $agePlayer3, $agePlayer4, $agePlayer5);
+                <?php
+                $youngestPlayer = min($agePlayer1, $agePlayer2, $agePlayer3, $agePlayer4, $agePlayer5);
 
-            if($youngestPlayer === $agePlayer1) {
-                echo "<p>$namePlayer1 a $agePlayer1 ans. Il est donc le joueur le plus jeune.</p>";
-            }
-            if($youngestPlayer === $agePlayer2) {
-                echo "<p>$namePlayer2 a $agePlayer2 ans. Il est donc le joueur le plus jeune.</p>";
-            }
-            if($youngestPlayer === $agePlayer3) {
-                echo "<p>$namePlayer3 a $agePlayer3 ans. Il est donc le joueur le plus jeune.</p>";
-            }
-            if($youngestPlayer === $agePlayer4) {
-                echo "<p>$namePlayer4 a $agePlayer4 ans. Il est donc le joueur le plus jeune.</p>";
-            }
-            if($youngestPlayer === $agePlayer5) {
-                echo "<p>$namePlayer5 a $agePlayer5 ans. Il est donc le joueur le plus jeune.</p>";
-            }
+                if ($youngestPlayer === $agePlayer1) {
+                    echo "<p>$namePlayer1 a $agePlayer1 ans. Il est donc le joueur le plus jeune.</p>";
+                }
+                if ($youngestPlayer === $agePlayer2) {
+                    echo "<p>$namePlayer2 a $agePlayer2 ans. Il est donc le joueur le plus jeune.</p>";
+                }
+                if ($youngestPlayer === $agePlayer3) {
+                    echo "<p>$namePlayer3 a $agePlayer3 ans. Il est donc le joueur le plus jeune.</p>";
+                }
+                if ($youngestPlayer === $agePlayer4) {
+                    echo "<p>$namePlayer4 a $agePlayer4 ans. Il est donc le joueur le plus jeune.</p>";
+                }
+                if ($youngestPlayer === $agePlayer5) {
+                    echo "<p>$namePlayer5 a $agePlayer5 ans. Il est donc le joueur le plus jeune.</p>";
+                }
 
-            ?>
+                ?>
             </div>
         </section>
     </div>
