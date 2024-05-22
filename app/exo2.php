@@ -181,17 +181,10 @@ $fruits = ["fraise", "banane", "pomme", "cerise", "abricot", "pêche", "ananas",
             <div class="exercice-sandbox">
                 <ul>
                     <?php
-                    if (str_contains($salad, 'banane')) {
-                        echo "<li>banane</li>";
-                    }
-                    if (str_contains($salad, 'pêches')) {
-                        echo "<li>pêches</li>";
-                    }
-                    if (str_contains($salad, 'fraises')) {
-                        echo "<li>fraises</li>";
-                    }
-                    if (str_contains($salad, 'noix')) {
-                        echo "<li>noix</li>";
+                    foreach ($fruits as $fruit) {
+                        if (str_contains($salad, $fruit) !== false) {
+                            echo "<li>{$fruit}</li>";
+                        }
                     }
                     ?>
                 </ul>
