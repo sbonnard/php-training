@@ -180,7 +180,22 @@ $fruits = ["fraise", "banane", "pomme", "cerise", "abricot", "pêche", "ananas",
             <h2 class="exercice-ttl">Question 10</h2>
             <p class="exercice-txt">Afficher dans une liste HTML tous les fruits de la liste qui apparaissent dans la phrase suivante : "<?= $salad ?>"</p>
             <div class="exercice-sandbox">
-
+                <ul>
+                    <?php
+                    if (str_contains($salad, 'banane')) {
+                        echo "<li>banane</li>";
+                    }
+                    if (str_contains($salad, 'pêches')) {
+                        echo "<li>pêches</li>";
+                    }
+                    if (str_contains($salad, 'fraises')) {
+                        echo "<li>fraises</li>";
+                    }
+                    if (str_contains($salad, 'noix')) {
+                        echo "<li>noix</li>";
+                    }
+                    ?>
+                </ul>
             </div>
         </section>
     </div>
