@@ -143,14 +143,16 @@ $fruits = ["fraise", "banane", "pomme", "cerise", "abricot", "pêche", "ananas",
             <p class="exercice-txt">Dans la phrase suivante : "<?= $breakfast ?>"</p>
             <p class="exercice-txt">Remplacez pomme par pêche et banane par mangue et affichez-la.</p>
             <div class="exercice-sandbox">
-                <?php
-                $breakfastArray = explode(' ', $breakfast);
-
-                $breakfast = str_replace('pomme', 'pêche', $breakfast);
-                $breakfast = str_replace('banane', 'mangue', $breakfast);
-
-                echo ($breakfast);
-                ?>
+                <p>
+                    <?php
+                    $breakfast = str_replace(
+                        ['pomme', 'banane'],
+                        ['pêche', 'mangue'],
+                        $breakfast
+                    );
+                    echo ($breakfast);
+                    ?>
+                </p>
             </div>
         </section>
 
