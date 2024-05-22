@@ -163,8 +163,7 @@ $fruits = ["fraise", "banane", "pomme", "cerise", "abricot", "pêche", "ananas",
             <div class="exercice-sandbox">
                 <p>
                     <?php
-                    $fruits = implode(", ", $fruits);
-                    echo "$fruits";
+                    echo ucfirst(implode(", ", $fruits)) . ".";
                     ?>
                 </p>
             </div>
