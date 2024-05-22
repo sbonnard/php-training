@@ -75,15 +75,17 @@ $fruits = ["fraise", "banane", "pomme", "cerise", "abricot", "pêche", "ananas",
             <h2 class="exercice-ttl">Question 4</h2>
             <p class="exercice-txt">Afficher 1 fruit sur 2 dans une liste HTML, en commençant par la fraise</p>
             <div class="exercice-sandbox">
-                <?php
-                $i = 0;
-                while ($i < sizeof($fruits)) {
-                    if ($i % 2 == 0) {
-                        echo "<li>$fruits[$i]</li>";
+                <ul>
+                    <?php
+                    $i = 0;
+                    while ($i < sizeof($fruits)) {
+                        if ($i % 2 === 0) {
+                            echo "<li>$fruits[$i]</li>";
+                        }
+                        $i++;
                     }
-                    $i++;
-                }
-                ?>
+                    ?>
+                </ul>
             </div>
         </section>
 
@@ -143,7 +145,6 @@ $fruits = ["fraise", "banane", "pomme", "cerise", "abricot", "pêche", "ananas",
             <div class="exercice-sandbox">
                 <?php
                 $breakfastArray = explode(' ', $breakfast);
-
 
                 $breakfast = str_replace('pomme', 'pêche', $breakfast);
                 $breakfast = str_replace('banane', 'mangue', $breakfast);
