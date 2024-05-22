@@ -144,12 +144,9 @@ $fruits = ["fraise", "banane", "pomme", "cerise", "abricot", "pêche", "ananas",
                 <?php
                 $breakfastArray = explode(' ', $breakfast);
 
-                if (str_contains($breakfast, 'pomme')) {
-                    str_replace('pomme', 'pêche', $breakfast);
-                }
-                if (str_contains($breakfast, 'banane')) {
-                    str_replace('banane', 'mangue', $breakfast);
-                }
+
+                $breakfast = str_replace('pomme', 'pêche', $breakfast);
+                $breakfast = str_replace('banane', 'mangue', $breakfast);
 
                 echo ($breakfast);
                 ?>
