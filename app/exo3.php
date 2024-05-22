@@ -51,9 +51,9 @@ $prices = [3, 2, 2, 5, 8];
             <p class="exercice-txt">Ajouter 1 euro à chaque prix</p>
             <div class="exercice-sandbox">
                 <?php
-                foreach ($prices as $price) {
-                    $price += 1;
-                    echo '<li>' . $price . '€</li>';
+                foreach ($prices as $i => $price) {
+                    $prices[$i] += 1;
+                    echo '<li>' . $prices[$i] . '€</li>';
                 }
                 ?>
             </div>
@@ -103,7 +103,6 @@ $prices = [3, 2, 2, 5, 8];
                             echo "<li>$fruit</li>";
                         }
                     }
-
                     ?>
                 </ul>
             </div>
@@ -114,7 +113,17 @@ $prices = [3, 2, 2, 5, 8];
             <h2 class="exercice-ttl">Question 6</h2>
             <p class="exercice-txt">Composer un panier de fruits ne dépassant pas 12 euros, en sélectionnant chaque fruit dans l'ordre actuel.</p>
             <div class="exercice-sandbox">
-
+                <ul>
+                    <?php
+                    $cartPrice = 0;
+                    $cart = [];
+                    $i = 0;
+                    while ($cartPrice <= 12) {
+                        $cartPrice += $store;
+                    }
+                    var_dump($cartPrice);
+                    ?>
+                </ul>
             </div>
         </section>
 
