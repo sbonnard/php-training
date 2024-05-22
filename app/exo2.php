@@ -182,7 +182,7 @@ $fruits = ["fraise", "banane", "pomme", "cerise", "abricot", "pêche", "ananas",
                 <ul>
                     <?php
                     foreach ($fruits as $fruit) {
-                        if (str_contains($salad, $fruit) !== false) {
+                        if (str_contains($salad, $fruit)) {
                             echo "<li>{$fruit}</li>";
                         }
                     }
