@@ -53,7 +53,7 @@ $prices = [3, 2, 2, 5, 8];
                 <?php
                 foreach ($prices as $price) {
                     $price += 1;
-                    echo "<li>" . $price . "€</li>";
+                    echo '<li>' . $price . '€</li>';
                 }
                 ?>
             </div>
@@ -64,7 +64,10 @@ $prices = [3, 2, 2, 5, 8];
             <h2 class="exercice-ttl">Question 3</h2>
             <p class="exercice-txt">Créer le tableau $store qui combine les tableaux des fruits et des prix afin d'obtenir un tableau associatif d'attribution des prix. Afficher le tableau obtenu</p>
             <div class="exercice-sandbox">
-
+                <?php
+                $store = array_combine($fruits, $prices);
+                var_dump($store);
+                ?>
             </div>
         </section>
 
@@ -73,7 +76,17 @@ $prices = [3, 2, 2, 5, 8];
             <h2 class="exercice-ttl">Question 4</h2>
             <p class="exercice-txt">Afficher dans une liste HTML le nom des fruits ayant un prix inférieur à 4 euros</p>
             <div class="exercice-sandbox">
-
+                <ul>
+                    <?php
+                    $i = 0;
+                    foreach($store as $product => $price) {
+                        if ($price <= 4){
+                            echo "<li>$product</li>";
+                        }
+                        $i++;
+                    }
+                    ?>
+                </ul>
             </div>
         </section>
 
