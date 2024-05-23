@@ -52,8 +52,20 @@ $arrayB = [85, "toi", 95, "la", 65, 94, 85, "avec", 37, "chat"];
             <h2 class="exercice-ttl">Question 2</h2>
             <p class="exercice-txt">Déclarer une fonction qui prend en paramètre un tableau d'entiers et retourne uniquement les valeurs paires. Afficher les valeurs du tableau sous la forme d'une liste HTML.</p>
             <div class="exercice-sandbox">
-                <?php
-                ?>
+                <ul>
+                    <?php
+                    function getEvenValues($anyArray)
+                    {
+                        foreach ($anyArray as $value) {
+                            if ($value % 2 === 0) {
+                                echo "<li>$value</li>";
+                            }
+                        }
+                    }
+
+                    getEvenValues($array);
+                    ?>
+                </ul>
             </div>
         </section>
 
