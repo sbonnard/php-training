@@ -1,4 +1,5 @@
 <?php
+include "./include/includes.php";
 
 $array = [12, 65, 95, 41, 85, 63, 71, 64];
 
@@ -40,14 +41,6 @@ $arrayB = [85, "toi", 95, "la", 65, 94, 85, "avec", 37, "chat"];
             <div class="exercice-sandbox">
                 <ul>
                     <?php
-                    function turnArrayIntoList($array)
-                    {
-                        implode($array);
-                        foreach ($array as $value) {
-                            echo "<li>$value</li>";
-                        }
-                    }
-
                     turnArrayIntoList($array);
                     ?>
                 </ul>
@@ -59,7 +52,8 @@ $arrayB = [85, "toi", 95, "la", 65, 94, 85, "avec", 37, "chat"];
             <h2 class="exercice-ttl">Question 2</h2>
             <p class="exercice-txt">Déclarer une fonction qui prend en paramètre un tableau d'entiers et retourne uniquement les valeurs paires. Afficher les valeurs du tableau sous la forme d'une liste HTML.</p>
             <div class="exercice-sandbox">
-
+                <?php
+                ?>
             </div>
         </section>
 
