@@ -80,8 +80,6 @@ $arrayB = [85, "toi", 95, "la", 65, 94, 85, "avec", 37, "chat"];
             <div class="exercice-sandbox">
                 <ul>
                     <?php
-
-
                     doublesArrayValues($array);
                     ?>
                 </ul>
@@ -93,7 +91,26 @@ $arrayB = [85, "toi", 95, "la", 65, 94, 85, "avec", 37, "chat"];
             <h2 class="exercice-ttl">Question 4 bis</h2>
             <p class="exercice-txt">Déclarer une fonction qui prend en paramètre un tableau d'entiers et un entier. La fonction doit retourner les valeurs du tableau divisées par le second paramètre</p>
             <div class="exercice-sandbox">
+                <ul>
+                    <?php
+                    function divideArrayValues(array $intArray, int $divider = 2)
+                    {
+                        $i = 0;
+                        foreach ($intArray as $value[$i]) {
+                            echo "<li>" . $value[$i] / $divider . "</li>";
+                            $i++;
+                        }
+                    }
 
+                    divideArrayValues($array, 3);
+                    ?>
+                </ul>
+                <br>
+                <ul>
+                    <?php
+                    divideArrayValues($array);
+                    ?>
+                </ul>
             </div>
         </section>
 
