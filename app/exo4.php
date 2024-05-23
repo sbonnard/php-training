@@ -54,15 +54,6 @@ $arrayB = [85, "toi", 95, "la", 65, 94, 85, "avec", 37, "chat"];
             <div class="exercice-sandbox">
                 <ul>
                     <?php
-                    function getEvenValues($anyArray)
-                    {
-                        foreach ($anyArray as $value) {
-                            if ($value % 2 === 0) {
-                                echo "<li>$value</li>";
-                            }
-                        }
-                    }
-
                     getEvenValues($array);
                     ?>
                 </ul>
@@ -74,7 +65,11 @@ $arrayB = [85, "toi", 95, "la", 65, 94, 85, "avec", 37, "chat"];
             <h2 class="exercice-ttl">Question 3</h2>
             <p class="exercice-txt">Déclarer une fonction qui prend en paramètre un tableau d'entiers et retourne uniquement les entiers d'index pair</p>
             <div class="exercice-sandbox">
-
+                <ul>
+                    <?php
+                    getEvenIndexes($array);
+                    ?>
+                </ul>
             </div>
         </section>
 
@@ -83,7 +78,13 @@ $arrayB = [85, "toi", 95, "la", 65, 94, 85, "avec", 37, "chat"];
             <h2 class="exercice-ttl">Question 4</h2>
             <p class="exercice-txt">Déclarer une fonction qui prend en paramètre un tableau d'entiers. La fonction doit retourner les valeurs du tableau mulipliées par 2.</p>
             <div class="exercice-sandbox">
+                <ul>
+                    <?php
 
+
+                    doublesArrayValues($array);
+                    ?>
+                </ul>
             </div>
         </section>
 
