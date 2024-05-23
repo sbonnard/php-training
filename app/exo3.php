@@ -171,7 +171,14 @@ $prices = [3, 2, 2, 5, 8];
             <h2 class="exercice-ttl">Question 9</h2>
             <p class="exercice-txt">Ajouter les nouveaux fruits du tableau $newFruits au tableau $store</p>
             <div class="exercice-sandbox">
-
+                <?php
+                foreach ($newFruits as $fruit => $price) {
+                    $fruits[] = $fruit;
+                    $prices[] = $price;
+                }
+                $store = array_combine($fruits, $prices);
+                var_dump($store);
+                ?>
             </div>
         </section>
 
