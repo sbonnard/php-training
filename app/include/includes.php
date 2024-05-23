@@ -71,3 +71,22 @@ function doublesArrayValues($intArray)
         $i++;
     }
 }
+
+
+// ------------------Question 4bis ------------------- //
+
+/**
+ * Divides every value from an array (int).
+ *
+ * @param array $intArray The array you want the values to be divided.
+ * @param integer $divider The int that will divide each value. If not given, divider = 2.
+ * @return void The values divided by your divider.
+ */
+function divideArrayValues(array $intArray, int $divider = 2)
+{
+    $i = 0;
+    foreach ($intArray as $value[$i]) {
+        echo "<li>" . $value[$i] / $divider . "</li>";
+        $i++;
+    }
+}

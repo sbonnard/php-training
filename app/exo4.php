@@ -93,15 +93,6 @@ $arrayB = [85, "toi", 95, "la", 65, 94, 85, "avec", 37, "chat"];
             <div class="exercice-sandbox">
                 <ul>
                     <?php
-                    function divideArrayValues(array $intArray, int $divider = 2)
-                    {
-                        $i = 0;
-                        foreach ($intArray as $value[$i]) {
-                            echo "<li>" . $value[$i] / $divider . "</li>";
-                            $i++;
-                        }
-                    }
-
                     divideArrayValues($array, 3);
                     ?>
                 </ul>
