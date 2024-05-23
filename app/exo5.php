@@ -59,8 +59,18 @@ try {
             <h2 class="exercice-ttl">Question 2</h2>
             <p class="exercice-txt">Afficher la liste de toutes les séries avec l'image principale et son titre</p>
             <p class="exercice-txt">Afficher une seule série par ligne sur les plus petits écrans, 2 séries par ligne sur les écrans intermédiaires et 4 séries par ligne sur un écran d'ordinateur.</p>
-            <div class="exercice-sandbox">
-
+            <div class="exercice-sandbox grid">
+                <div class="flex-column ">
+                    <?php
+                    function generateContent($array)
+                    {
+                        foreach ($array as $serie) {
+                            echo "<h2>{$serie['name']}</h2>" . "<img class='img-series' src='{$serie['image']}' alt=''>";
+                        }
+                    }
+                    var_dump(generateContent($series));
+                    ?>
+                </div>
             </div>
         </section>
 
