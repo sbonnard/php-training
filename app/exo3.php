@@ -115,13 +115,20 @@ $prices = [3, 2, 2, 5, 8];
             <div class="exercice-sandbox">
                 <ul>
                     <?php
-                    $cartPrice = 0;
                     $cart = [];
-                    $i = 0;
-                    while ($cartPrice <= 12) {
-                        $cartPrice += $store;
+                    $totalCoast = 0;
+
+                    foreach ($store as $fruit => $price) {
+                        if ($totalCoast + $price <= 12.0) {
+                            $cart[] = $fruit;
+                            $totalCoast += $price;
+                            echo "<li>{$fruit}</li>";
+                        } else {
+                            break;
+                        }
                     }
-                    var_dump($cartPrice);
+
+                    echo 'Le prix total est ' . number_format($totalCoast) . '€.'
                     ?>
                 </ul>
             </div>
@@ -132,7 +139,9 @@ $prices = [3, 2, 2, 5, 8];
             <h2 class="exercice-ttl">Question 7</h2>
             <p class="exercice-txt">En reprenant le prix total du panier constitué à la question précédente, appliquez-lui une taxe de 18%. Afficher le total taxe comprise.</p>
             <div class="exercice-sandbox">
-
+                <?php
+                echo number_format(($totalCoast * 1.18), 2) . "€";
+                ?>
             </div>
         </section>
 
@@ -141,7 +150,12 @@ $prices = [3, 2, 2, 5, 8];
             <h2 class="exercice-ttl">Question 8</h2>
             <p class="exercice-txt">Ajouter au tableau $store le fruit "kiwi" pour un prix de 1,50 € puis afficher le tableau complet</p>
             <div class="exercice-sandbox">
-
+                <?php
+                $fruits[] = 'kiwi';
+                $prices[] = 1.5;
+                $store = array_combine($fruits, $prices);
+                var_dump($store);
+                ?>
             </div>
         </section>
 
