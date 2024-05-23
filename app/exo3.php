@@ -139,9 +139,11 @@ $prices = [3, 2, 2, 5, 8];
             <h2 class="exercice-ttl">Question 7</h2>
             <p class="exercice-txt">En reprenant le prix total du panier constitué à la question précédente, appliquez-lui une taxe de 18%. Afficher le total taxe comprise.</p>
             <div class="exercice-sandbox">
-                <?php
-                echo number_format(($totalCoast * 1.18), 2) . "€";
-                ?>
+                <p>
+                    <?php
+                    echo number_format(($totalCoast * 1.18), 2) . "€";
+                    ?>
+                </p>
             </div>
         </section>
 
@@ -187,14 +189,16 @@ $prices = [3, 2, 2, 5, 8];
             <h2 class="exercice-ttl">Question 10</h2>
             <p class="exercice-txt">Afficher le nom et le prix du fruit le moins cher</p>
             <div class="exercice-sandbox">
-                <?php
-                $lowestPrice = min(array_values($store));
-                foreach ($store as $fruit => $price) {
-                    if ($price === $lowestPrice) {
-                        echo "Le {$fruit} est le moins cher. Il coûte " . number_format($lowestPrice, 2) . "€.";
+                <p>
+                    <?php
+                    $lowestPrice = min(array_values($store));
+                    foreach ($store as $fruit => $price) {
+                        if ($price === $lowestPrice) {
+                            echo "Le {$fruit} est le moins cher. Il coûte " . number_format($lowestPrice, 2) . "€.";
+                        }
                     }
-                }
-                ?>
+                    ?>
+                </p>
             </div>
         </section>
 
@@ -203,7 +207,19 @@ $prices = [3, 2, 2, 5, 8];
             <h2 class="exercice-ttl">Question 11</h2>
             <p class="exercice-txt">Afficher les noms et le prix des fruits les plus chers</p>
             <div class="exercice-sandbox">
+                <ul>
+                    <?php
 
+                    $highestPrice = max(array_values($store));
+                    var_dump($highestPrice);
+
+                    foreach ($store as $fruit => $price) {
+                        if ($price === $highestPrice) {
+                            echo "<li>{$fruit} => " . number_format($highestPrice, 2) . "€</li>";
+                        }
+                    }
+                    ?>
+                </ul>
             </div>
         </section>
     </div>
