@@ -443,6 +443,7 @@ body.dark-template {
 
 .series-ttl {
     font-size: 1rem;
+    color: black;
 }
 
 @media screen and (max-width: 768px) {

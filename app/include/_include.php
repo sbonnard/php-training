@@ -1,4 +1,3 @@
-
 <?php
 
 /**
@@ -178,17 +177,21 @@ function getFirstElements(array $array, int $nb): array
 }
 
 /**
- * Get the streaming platforms from an array (api).
+ * get the platform from the series data.
  *
- * @param array $array The array on whitch you can find series and their platforms.
- * @return void $array An array containing only streaming platforms of the deifferent series.
+ * @param array $seriesData the array entry
+ * @return array the list of platform
  */
-function getStreamingPlatform(array $array): array
+function getStreamingPlatform(array $seriesData): array
 {
-    $i = 0;
-    foreach ($array as $serie[$i]) {
-        $availableOn[] = ($array[$i]['availableOn']);
-        $i++;
+    $platforms = [];
+
+    foreach ($seriesData as $show) {
+        $platforms[] = $show["availableOn"];
     }
-    return $availableOn;
+
+    $platforms = excludeDuplicates($platforms);
+    sort($platforms);
+
+    return $platforms;
 }

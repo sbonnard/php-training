@@ -1,0 +1,37 @@
+/* Exercices */
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: baseline;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.img-series {
+    width: 10rem;
+}
+
+.series-ttl {
+    font-size: 1rem;
+    color: black;
+}
+
+@media screen and (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+    .img-series {
+        width: 10rem;
+    }
+}

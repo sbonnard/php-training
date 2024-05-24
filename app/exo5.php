@@ -64,9 +64,8 @@ try {
                 <?php
                 function generateContent($array)
                 {
-                    $newSeriesElement = [];
                     foreach ($array as $serie) {
-                        echo  '<a href="exo5.php?serie=' . $serie["id"] . '" class="flex-column"><h2 class="series-ttl">' . $serie["name"] . '</h2>' . '<img class="img-series" src="' . $serie["image"] . '" alt=""></a>';
+                        echo  '<a href="exo5.php?serie=' . $serie["id"] . '" class="flex-column"><h2 class="series-ttl">' . $serie["name"] . '</h2>' . '<img id=' . $serie["id"] . ' class="img-series" src="' . $serie["image"] . '" alt=""></a>';
                     }
                 }
                 echo generateContent($series);
@@ -93,12 +92,15 @@ try {
             <p class="exercice-txt">Si l'identifiant ne correspond à aucune série, afficher un message d'erreur.</p>
             <div class="exercice-sandbox">
                 <?php
+                var_dump($series[0]);
                 function diplaySeriesInformation(array $array): array
                 {
-                    foreach ($array as $serie) {
-                        if (in_array('exo5.php?serie=' . $serie["id"], $_GET, false)) {
-                            return $serie;
+                    $key = 0;
+                    foreach ($array as $key => $serie) {
+                        if (in_array('exo5.php?serie=' . $serie["id"], $_GET)) {
+                            return $serie[$key];
                         }
+                       $key++;
                     }
                 }
 
