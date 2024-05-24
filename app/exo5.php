@@ -1,5 +1,5 @@
 <?php
-include "./include/_includes.php";
+include "./include/_include.php";
 // Json file
 try {
     $fileContent = file_get_contents("datas/series.json");
@@ -8,6 +8,7 @@ try {
     echo "Something went wrong with json file...";
     exit;
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +50,7 @@ try {
             <p class="exercice-txt">Récupérer dans un tableau puis afficher l'ensemble des plateformes de diffusion des séries. Afficher les par ordre alphabétique.</p>
             <div class="exercice-sandbox">
                 <?php
-                getStreamingPlatform($series);
+                var_dump(getStreamingPlatform($series));
                 ?>
             </div>
         </section>
@@ -60,17 +61,16 @@ try {
             <p class="exercice-txt">Afficher la liste de toutes les séries avec l'image principale et son titre</p>
             <p class="exercice-txt">Afficher une seule série par ligne sur les plus petits écrans, 2 séries par ligne sur les écrans intermédiaires et 4 séries par ligne sur un écran d'ordinateur.</p>
             <div class="exercice-sandbox grid">
-                <div class="flex-column ">
-                    <?php
-                    function generateContent($array)
-                    {
-                        foreach ($array as $serie) {
-                            echo "<h2>{$serie['name']}</h2>" . "<img class='img-series' src='{$serie['image']}' alt=''>";
-                        }
+                <?php
+                function generateContent($array)
+                {
+                    $newSeriesElement = [];
+                    foreach ($array as $serie) {
+                        echo  '<a href="exo5.php?serie=' . $serie["id"] . '" class="flex-column"><h2 class="series-ttl">' . $serie["name"] . '</h2>' . '<img class="img-series" src="' . $serie["image"] . '" alt=""></a>';
                     }
-                    var_dump(generateContent($series));
-                    ?>
-                </div>
+                }
+                echo generateContent($series);
+                ?>
             </div>
         </section>
 
@@ -80,6 +80,7 @@ try {
             <p class="exercice-txt">Ajouter un lien aux séries listées ci-dessus menant à cette page avec en paramètre "serie", l'identifiant de la série</p>
             <div class="exercice-sandbox">
                 <?php
+                echo "<p>Répondu en 3</p>"
                 ?>
             </div>
         </section>
@@ -92,6 +93,16 @@ try {
             <p class="exercice-txt">Si l'identifiant ne correspond à aucune série, afficher un message d'erreur.</p>
             <div class="exercice-sandbox">
                 <?php
+                function diplaySeriesInformation(array $array): array
+                {
+                    foreach ($array as $serie) {
+                        if (in_array('exo5.php?serie=' . $serie["id"], $_GET, false)) {
+                            return $serie;
+                        }
+                    }
+                }
+
+                var_dump(diplaySeriesInformation($series));
                 ?>
             </div>
         </section>

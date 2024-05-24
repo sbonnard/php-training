@@ -176,3 +176,19 @@ function getFirstElements(array $array, int $nb): array
 
     return $newArray;
 }
+
+/**
+ * Get the streaming platforms from an array (api).
+ *
+ * @param array $array The array on whitch you can find series and their platforms.
+ * @return void $array An array containing only streaming platforms of the deifferent series.
+ */
+function getStreamingPlatform(array $array): array
+{
+    $i = 0;
+    foreach ($array as $serie[$i]) {
+        $availableOn[] = ($array[$i]['availableOn']);
+        $i++;
+    }
+    return $availableOn;
+}

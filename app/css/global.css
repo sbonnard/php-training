@@ -47,6 +47,7 @@ a:active,
 a:focus,
 a:hover {
     text-decoration: none;
+    cursor: pointer;
 }
 
 input:focus,
@@ -414,7 +415,9 @@ body.dark-template {
 
 .grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .grid:nth-child(1n) {
@@ -428,8 +431,27 @@ body.dark-template {
 .flex-column {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: baseline;
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
 .img-series {
-    width: fit-content;
+    width: 10rem;
+}
+
+.series-ttl {
+    font-size: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+    .img-series {
+        width: 10rem;
+    }
 }
