@@ -41,7 +41,7 @@ $arrayB = [85, "toi", 95, "la", 65, 94, 85, "avec", 37, "chat"];
             <div class="exercice-sandbox">
                 <ul>
                     <?php
-                    turnArrayIntoList($array);
+                    turnIntoString($array);
                     ?>
                 </ul>
             </div>

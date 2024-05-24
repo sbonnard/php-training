@@ -79,7 +79,8 @@ try {
             <h2 class="exercice-ttl">Question 3</h2>
             <p class="exercice-txt">Ajouter un lien aux séries listées ci-dessus menant à cette page avec en paramètre "serie", l'identifiant de la série</p>
             <div class="exercice-sandbox">
-
+                <?php
+                ?>
             </div>
         </section>
 
@@ -90,7 +91,8 @@ try {
             <p class="exercice-txt">Si l'URL de la page appelée comporte l'identifiant d'une série, alors afficher toutes les informations de la série ci-dessous.</p>
             <p class="exercice-txt">Si l'identifiant ne correspond à aucune série, afficher un message d'erreur.</p>
             <div class="exercice-sandbox">
-
+                <?php
+                ?>
             </div>
         </section>
 
@@ -99,7 +101,8 @@ try {
             <h2 class="exercice-ttl">Question 5</h2>
             <p class="exercice-txt">Récupérer dans un tableau l'ensemble des styles de séries dans une liste HTML. Afficher les par ordre alphabétique dans une liste HTML.</p>
             <div class="exercice-sandbox">
-
+                <?php
+                ?>
             </div>
         </section>
 
@@ -108,7 +111,8 @@ try {
             <h2 class="exercice-ttl">Question 6</h2>
             <p class="exercice-txt">Ajoutez après chaque style de la liste ci-dessus, le nombre de séries correspondantes entre parenthèses.</p>
             <div class="exercice-sandbox">
-
+                <?php
+                ?>
             </div>
         </section>
 
@@ -117,7 +121,8 @@ try {
             <h2 class="exercice-ttl">Question 7</h2>
             <p class="exercice-txt">Ajoutez un lien à chaque nom de style ci-dessus menant à cette page avec en paramètre "style" le nom du style.</p>
             <div class="exercice-sandbox">
-
+                <?php
+                ?>
             </div>
         </section>
 
@@ -126,7 +131,8 @@ try {
             <h2 class="exercice-ttl">Question 8</h2>
             <p class="exercice-txt">Si l'URL de la page appelée comporte un style, affichez à la Question 2 uniquement les séries de ce style.</p>
             <div class="exercice-sandbox">
-
+                <?php
+                ?>
             </div>
         </section>
 

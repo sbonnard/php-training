@@ -3,16 +3,16 @@
 // ------------------Question 1------------------- //
 
 /**
- * Turns an array into string, then list.
+ * Turns array values into string, then list.
  * 
  * @param [$array] $intArray The array you want to turn into an HTML list.
  * @return void [$string] A list of numbers stringified.
  */
-function turnArrayIntoList($intArray)
+function turnIntoString(array $intArray)
 {
     implode($intArray);
     foreach ($intArray as $value) {
-        echo "<li>$value</li>";
+        echo "<li>" . strval($value) . "</li>";
     }
 }
 
@@ -25,7 +25,7 @@ function turnArrayIntoList($intArray)
  * @param [$array] $intArray The array you want to get the even numbers from.
  * @return void [$number] The int values that are even.
  */
-function getEvenValues($intArray)
+function getEvenValues(array $intArray)
 {
     foreach ($intArray as $value) {
         if ($value % 2 === 0) {
@@ -43,7 +43,7 @@ function getEvenValues($intArray)
  * @param [$array] $intArray An array only composed of int.
  * @return void [$int] Int with even indexes in an array.
  */
-function getEvenIndexes($intArray)
+function getEvenIndexes(array $intArray)
 {
     $i = 0;
     foreach ($intArray as $value[$i]) {
@@ -63,7 +63,7 @@ function getEvenIndexes($intArray)
  * @param [$array] $intArray The array you want to double the values from.
  * @return void [$int] Each value doubled.
  */
-function doublesArrayValues($intArray)
+function doublesArrayValues(array $intArray)
 {
     $i = 0;
     foreach ($intArray as $value[$i]) {
