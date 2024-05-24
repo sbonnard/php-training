@@ -1,5 +1,7 @@
 <?php
 
+// These functions work but are not as safe as the corrected ones in inclues/_includes.php //
+
 // ------------------Question 1------------------- //
 
 /**
@@ -119,8 +121,7 @@ function deleteDoubles(array $anyArray)
  */
 function getIntersection(array $anyArrayA, array $anyArrayB)
 {
-    $intersection = array_intersect($anyArrayA, $anyArrayB);
-    return $intersection;
+    return array_intersect($anyArrayA, $anyArrayB);
 }
 
 
@@ -135,8 +136,7 @@ function getIntersection(array $anyArrayA, array $anyArrayB)
  */
 function getDifferences(array $anyArrayA, array $anyArrayB)
 {
-    $differences = array_diff($anyArrayA, $anyArrayB);
-    return $differences;
+    return array_diff($anyArrayA, $anyArrayB);
 }
 
 
