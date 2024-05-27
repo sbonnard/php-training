@@ -208,10 +208,17 @@ function getPlatformsFromSeries(array $seriesData): array
  * Generate and return HTML code to display the show with the details in parameter.
  *
  * @param array $show An array containing show details
+ * @param bool $full Display all show details if true, default false
  * @return string HTML code to display the show
  */
-function generateShow(array $show): string
+function generateShow(array $show, bool $full = false): string
 {
+    if ($full) {
+        return '<h3 class="series__ttl">' . $show['name'] . '</h3>'
+            . '<img class="series__img" src="' . $show['image'] . '" alt="' . $show['name'] . '">'
+            . '<h4>Acteurs</h4>'
+            . getArrayAsHTMLList($show['actors']);
+    }
     return '<a href="exo5.php?serie=' . $show['id'] . '#question4">'
         . '<h3 class="series__ttl">' . $show['name'] . '</h3>'
         . '<img class="series__img" src="' . $show['image'] . '" alt="' . $show['name'] . '">'
@@ -235,20 +242,18 @@ function generateSeries(array $series): string
 }
 
 /**
- * Displays an array containing every show informations in $_GET.
+ * Get show informations from its ID.
  *
- * @param array $array The array you want to display the infis from..
- * @return array The array displaying show's infos.
+ * @param array $dataSeries The array containing series data.
+ * @param integer $id Show's ID you want the information of.
+ * @return array|null Show informations or null if no ID found.
  */
-function diplaySeriesInformation(array $array): array
+function getShowInformationsFromId(array $dataSeries, int $id): ?array
 {
-    $key = 0;
-    $showInfos = [];
-    foreach ($array as $show) {
-        if ($show["id"] === intval($_GET['serie'])) {
-            $showInfos[] = $show;
-            break;
+    foreach ($dataSeries as $show) {
+        if ($show['id'] === $id) {
+            return $show;
         }
     }
-    return $showInfos;
+    return null;
 }

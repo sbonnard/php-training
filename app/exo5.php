@@ -86,7 +86,18 @@ try {
             <p class="exercice-txt">Si l'identifiant ne correspond à aucune série, afficher un message d'erreur.</p>
             <div class="exercice-sandbox">
                 <?php
-                var_dump(diplaySeriesInformation($series));
+                if (isset($_GET['serie'])) {
+                    $seriesData = getShowInformationsFromId($series, $_GET['serie']);
+
+                    if (is_null($seriesData)) {
+                        echo '<p>La série sélectionnée n\'existe pas.</p>';
+                    } else {
+                        echo generateShow($seriesData, true);
+                    }
+                } else {
+                    echo '<p>Aucune série sélectionnée.</p>';
+                }
+
                 ?>
             </div>
         </section>
@@ -97,7 +108,23 @@ try {
             <p class="exercice-txt">Récupérer dans un tableau l'ensemble des styles de séries dans une liste HTML. Afficher les par ordre alphabétique dans une liste HTML.</p>
             <div class="exercice-sandbox">
                 <?php
-                var_dump($series[0]['styles']);
+                // var_dump($series[0]['styles']);
+
+                function getShowStyles(array $array): array
+                {
+                    $showStyles = [];
+                    $key = 0;
+                    foreach ($array as $key => $show) {
+                        $showStyles[] = $show['styles'];
+                    }
+                    // implode($showStyles);
+                    excludeDuplicates($showStyles);
+                    sort($showStyles);
+                    $key++;
+                    return $showStyles;
+                }
+
+                var_dump(getShowStyles($series));
                 ?>
             </div>
         </section>
