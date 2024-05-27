@@ -242,9 +242,10 @@ function generateSeries(array $series): string
  */
 function diplaySeriesInformation(array $array): array
 {
+    $key = 0;
     $showInfos = [];
     foreach ($array as $show) {
-        if ($show["id"] = $_GET) {
+        if ($show["id"] === intval($_GET['serie'])) {
             $showInfos[] = $show;
             break;
         }

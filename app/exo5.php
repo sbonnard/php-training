@@ -97,6 +97,7 @@ try {
             <p class="exercice-txt">Récupérer dans un tableau l'ensemble des styles de séries dans une liste HTML. Afficher les par ordre alphabétique dans une liste HTML.</p>
             <div class="exercice-sandbox">
                 <?php
+                var_dump($series[0]['styles']);
                 ?>
             </div>
         </section>
