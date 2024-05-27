@@ -214,12 +214,25 @@ function getPlatformsFromSeries(array $seriesData): array
 function generateShow(array $show, bool $full = false): string
 {
     if ($full) {
-        return '<h3 class="series__ttl">' . $show['name'] . '</h3>'
-            . '<img class="series__img" src="' . $show['image'] . '" alt="' . $show['name'] . '">'
-            . '<h4>Acteurs</h4>'
-            . getArrayAsHTMLList($show['actors']);
+        return '<div class="show">'
+            . '<h3 class="show__ttl">' . $show['name'] . '</h3>'
+            . '<img class="show__img" src="' . $show['image'] . '" alt="' . $show['name'] . '">'
+            . '<div class="show__details">'
+            . '<p>' . $show['country'] . ', ' . $show['launchYear'] . '</p>'
+            . '<p>Disponible sur ' . $show['availableOn'] . '</p>'
+            . '<p>Composée de ' . $show['numberOfEpisods'] . ' épisodes de ' . $show['episodeDurationInMinutes'] . ' minutes en ' . $show['numberOfSeasons'] . ' saisons.</p>'
+            . '<p>' . ($show['ongoing'] ? 'Toujours en cours.' : 'Série terminée') . '</p>'
+            . '<h4 class="show__sub-ttl">Styles</h4>'
+            . getArrayAsHTMLList($show['styles'])
+            . '<h4 class="show__sub-ttl">Acteurs</h4>'
+            . getArrayAsHTMLList($show['actors'])
+            . '<h4 class="show__sub-ttl">Equipe de création</h4>'
+            . getArrayAsHTMLList($show['createdBy'])
+            . '</div>'
+            . '</div>';
     }
-    return '<a href="exo5.php?serie=' . $show['id'] . '#question4">'
+
+    return '<a href="?serie=' . $show['id'] . '#question4">'
         . '<h3 class="series__ttl">' . $show['name'] . '</h3>'
         . '<img class="series__img" src="' . $show['image'] . '" alt="' . $show['name'] . '">'
         . '</a>';
@@ -234,11 +247,20 @@ function generateShow(array $show, bool $full = false): string
  */
 function generateSeries(array $series): string
 {
-    return getArrayAsHTMLList(
-        array_map("generateShow", $series),
-        'series',
-        'series__itm'
-    );
+    if (!isset($_GET['style'])) {
+        return getArrayAsHTMLList(
+            array_map("generateShow", $series),
+            'series',
+            'series__itm'
+        );
+    } else if (isset($_GET['style'])) {
+        $filteredSeries = array_filter($series, fn ($show) => in_array($_GET['style'], $show['styles']));
+        return getArrayAsHTMLList(
+            array_map("generateShow", $filteredSeries),
+            'series',
+            'series__itm'
+        );
+    }
 }
 
 /**
@@ -250,10 +272,131 @@ function generateSeries(array $series): string
  */
 function getShowInformationsFromId(array $dataSeries, int $id): ?array
 {
-    foreach ($dataSeries as $show) {
-        if ($show['id'] === $id) {
-            return $show;
-        }
-    }
-    return null;
+    // foreach ($dataSeries as $show) {
+    //     if ($show['id'] === $id) {
+    //         return $show;
+    //     }
+    // }
+    // return null;
+
+    $result = array_filter($dataSeries, fn ($s) => $s['id'] === $id);
+
+    if (count($result) !== 1) return null;
+
+    return current($result);
 }
+
+/**
+ * Get HTML code to display the show matching the id in the URL for the parameter 'serie'.
+ *
+ * @param array $series The array with all series data
+ * @return string
+ */
+function generateSelectedShow(array $series): string
+{
+    // Is there a selected show?
+    if (!isset($_GET['serie'])) {
+        return '<p class="warning">Aucune série sélectionnée.</p>';
+    }
+
+    // Get show informations from the selected id in the URL
+    $seriesData = getShowInformationsFromId($series, $_GET['serie']);
+
+    // There is no match
+    if (is_null($seriesData)) {
+        return '<p class="error">La série sélectionnée n\'existe pas.</p>';
+    }
+
+    // Return HTML code to display the selected show.
+    return  generateShow($seriesData, true);
+}
+
+/**
+ * Get the list of all styles and count them in the given array
+ * [
+ *    "style" => 6,
+ *    "style" => 2,
+ *    "style" => 3
+ * ]
+ * @param array $series The array with all series data
+ * @return array All the styles in alphabetic order
+ */
+function countStyles(array $series): array
+{
+    // $styles = [];
+    // foreach ($series as $show) {
+    //     //array_push($styles, ...$show['styles'] );
+    //     $styles = array_merge($styles, $show['styles']);
+    // }
+    $styles = array_merge(...array_column($series, 'styles'));
+    // $styles = excludeDuplicates($styles);
+    $styles = array_count_values($styles);
+    ksort($styles);
+    return $styles;
+}
+
+
+/**
+ * Get style label to display
+ *
+ * @param string $style Style name
+ * @param integer $nb Number of series
+ * @return string label to display the style
+ */
+function generateStyleLink(string $style, int $nb): string
+{
+    return '<a href="?style=' . urlencode($style) . '">' . $style . ' (' . $nb . ')</a>';
+}
+
+
+/**
+ * Generate HTML code to display styles list from given series. 
+ *
+ * @param array $series The array with all series data.
+ * @return string HTML code to display styles list.
+ */
+function generateStylesList(array $series): string
+{
+
+    $styles = countStyles($series);
+
+    // $newArray = [];
+    // foreach ($styles as $style => $nb) {
+    //     $newArray[] = "{$style} ({$nb})";
+    // }
+
+    $newArray = array_map("generateStyleLink", array_keys($styles), array_values($styles));
+
+    return getArrayAsHTMLList($newArray);
+}
+
+
+
+
+// function getShowInformationsFromStyle(array $dataSeries, string  $style): ?array
+// {
+//     $result = array_filter($dataSeries, fn ($s) => $s['style'] === $style);
+
+//     if (count($result) !== 1) return null;
+
+//     return current($result);
+// }
+
+// function generateStyleShow(array $series): string
+// {
+//     // Is there a selected show?
+//     if (!isset($_GET['style'])) {
+//         return '<p class="warning">Aucun style sélectionnée.</p>';
+//     }
+
+//     // Get show informations from the selected id in the URL
+//     $seriesData = getShowInformationsFromStyle($series, $_GET['style']);
+
+//     // There is no match
+//     if (is_null($seriesData)) {
+//         return '<p class="error">Le style sélectionnée n\'existe pas.</p>';
+//     }
+
+//     // Return HTML code to display the selected show.
+//     return  generateShow($seriesData, true);
+// }

@@ -50,7 +50,7 @@ try {
             <p class="exercice-txt">Récupérer dans un tableau puis afficher l'ensemble des plateformes de diffusion des séries. Afficher les par ordre alphabétique.</p>
             <div class="exercice-sandbox">
                 <?php
-                var_dump(getPlatformsFromSeries($series));
+                echo getArrayAsHTMLList(getPlatformsFromSeries($series));
                 ?>
             </div>
         </section>
@@ -85,20 +85,7 @@ try {
             <p class="exercice-txt">Si l'URL de la page appelée comporte l'identifiant d'une série, alors afficher toutes les informations de la série ci-dessous.</p>
             <p class="exercice-txt">Si l'identifiant ne correspond à aucune série, afficher un message d'erreur.</p>
             <div class="exercice-sandbox">
-                <?php
-                if (isset($_GET['serie'])) {
-                    $seriesData = getShowInformationsFromId($series, $_GET['serie']);
-
-                    if (is_null($seriesData)) {
-                        echo '<p>La série sélectionnée n\'existe pas.</p>';
-                    } else {
-                        echo generateShow($seriesData, true);
-                    }
-                } else {
-                    echo '<p>Aucune série sélectionnée.</p>';
-                }
-
-                ?>
+                <?= generateSelectedShow($series) ?>
             </div>
         </section>
 
@@ -107,25 +94,7 @@ try {
             <h2 class="exercice-ttl">Question 5</h2>
             <p class="exercice-txt">Récupérer dans un tableau l'ensemble des styles de séries dans une liste HTML. Afficher les par ordre alphabétique dans une liste HTML.</p>
             <div class="exercice-sandbox">
-                <?php
-                // var_dump($series[0]['styles']);
-
-                function getShowStyles(array $array): array
-                {
-                    $showStyles = [];
-                    $key = 0;
-                    foreach ($array as $key => $show) {
-                        $showStyles[] = $show['styles'];
-                    }
-                    // implode($showStyles);
-                    excludeDuplicates($showStyles);
-                    sort($showStyles);
-                    $key++;
-                    return $showStyles;
-                }
-
-                var_dump(getShowStyles($series));
-                ?>
+                <?= generateStylesList($series) ?>
             </div>
         </section>
 
@@ -135,6 +104,7 @@ try {
             <p class="exercice-txt">Ajoutez après chaque style de la liste ci-dessus, le nombre de séries correspondantes entre parenthèses.</p>
             <div class="exercice-sandbox">
                 <?php
+                echo "Fait dans exercice 5"
                 ?>
             </div>
         </section>
@@ -145,6 +115,7 @@ try {
             <p class="exercice-txt">Ajoutez un lien à chaque nom de style ci-dessus menant à cette page avec en paramètre "style" le nom du style.</p>
             <div class="exercice-sandbox">
                 <?php
+                echo "Fait dans exercice 5"
                 ?>
             </div>
         </section>
@@ -155,10 +126,10 @@ try {
             <p class="exercice-txt">Si l'URL de la page appelée comporte un style, affichez à la Question 2 uniquement les séries de ce style.</p>
             <div class="exercice-sandbox">
                 <?php
+                echo "Fait"
                 ?>
             </div>
         </section>
-
     </div>
     <div class="copyright">© Guillaume Belleuvre, 2023 - DWWM</div>
 </body>
