@@ -50,7 +50,7 @@ try {
             <p class="exercice-txt">Récupérer dans un tableau puis afficher l'ensemble des plateformes de diffusion des séries. Afficher les par ordre alphabétique.</p>
             <div class="exercice-sandbox">
                 <?php
-                var_dump(getStreamingPlatform($series));
+                var_dump(getPlatformsFromSeries($series));
                 ?>
             </div>
         </section>
@@ -62,13 +62,7 @@ try {
             <p class="exercice-txt">Afficher une seule série par ligne sur les plus petits écrans, 2 séries par ligne sur les écrans intermédiaires et 4 séries par ligne sur un écran d'ordinateur.</p>
             <div class="exercice-sandbox grid">
                 <?php
-                function generateContent($array)
-                {
-                    foreach ($array as $serie) {
-                        echo  '<a href="exo5.php?serie=' . $serie["id"] . '" class="flex-column"><h2 class="series-ttl">' . $serie["name"] . '</h2>' . '<img id=' . $serie["id"] . ' class="img-series" src="' . $serie["image"] . '" alt=""></a>';
-                    }
-                }
-                echo generateContent($series);
+                echo generateSeries($series);
                 ?>
             </div>
         </section>
@@ -92,16 +86,15 @@ try {
             <p class="exercice-txt">Si l'identifiant ne correspond à aucune série, afficher un message d'erreur.</p>
             <div class="exercice-sandbox">
                 <?php
-                var_dump($series[0]);
                 function diplaySeriesInformation(array $array): array
                 {
-                    $key = 0;
-                    foreach ($array as $key => $serie) {
-                        if (in_array('exo5.php?serie=' . $serie["id"], $_GET)) {
-                            return $serie[$key];
+                    $showInfos = [];
+                    foreach ($array as $show) {
+                        if (in_array('exo5.php?serie=' . $show["id"], $_GET)) {
+                            $showInfos [] = $show;
                         }
-                       $key++;
                     }
+                    return $showInfos;
                 }
 
                 var_dump(diplaySeriesInformation($series));

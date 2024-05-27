@@ -3,16 +3,18 @@
 /**
  * Get from an array a HTML list string
  * @param array $array your array you want in HTML list
+ * @param string $ulClass an optional CSS class to add to UL element
+ * @param string $liClass an optional CSS class to add to LI elements
  * @return string the HTML list
  */
-function getArrayAsHTMLList(array $array): string
+function getArrayAsHTMLList(array $array, string $ulClass = '', string $liClass = ''): string
 {
     // $values = '';
     // foreach($array as $value){
     //     $values .= "<li>{$value}</li>";
     // }
 
-    return '<ul>' . implode(array_map(fn ($v) => "<li>{$v}</li>", $array)) . '</ul>';
+    return '<ul class="' . $ulClass . '">' . implode(array_map(fn ($v) => '<li class="' . $liClass . '">' . $v . '</li>', $array)) . '</ul>';
 }
 
 /**
@@ -176,13 +178,18 @@ function getFirstElements(array $array, int $nb): array
     return $newArray;
 }
 
+
+// --------------
+// SERIES
+// --------------
+
 /**
  * get the platform from the series data.
  *
  * @param array $seriesData the array entry
  * @return array the list of platform
  */
-function getStreamingPlatform(array $seriesData): array
+function getPlatformsFromSeries(array $seriesData): array
 {
     $platforms = [];
 
@@ -194,4 +201,35 @@ function getStreamingPlatform(array $seriesData): array
     sort($platforms);
 
     return $platforms;
+}
+
+
+/**
+ * Generate and return HTML code to display the show with the details in parameter.
+ *
+ * @param array $show An array containing show details
+ * @return string HTML code to display the show
+ */
+function generateShow(array $show): string
+{
+    return '<a href="exo5.php?serie=' . $show['id'] . '#question4">'
+        . '<h3 class="series__ttl">' . $show['name'] . '</h3>'
+        . '<img class="series__img" src="' . $show['image'] . '" alt="' . $show['name'] . '">'
+        . '</a>';
+}
+
+
+/**
+ * Generate and return HTML code to display a series list.
+ *
+ * @param array $series An array that provides a list of series with all their details
+ * @return string HTML code to display the list of series
+ */
+function generateSeries(array $series): string
+{
+    return getArrayAsHTMLList(
+        array_map("generateShow", $series),
+        'series',
+        'series__itm'
+    );
 }
