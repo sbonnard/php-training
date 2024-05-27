@@ -233,3 +233,21 @@ function generateSeries(array $series): string
         'series__itm'
     );
 }
+
+/**
+ * Displays an array containing every show informations in $_GET.
+ *
+ * @param array $array The array you want to display the infis from..
+ * @return array The array displaying show's infos.
+ */
+function diplaySeriesInformation(array $array): array
+{
+    $showInfos = [];
+    foreach ($array as $show) {
+        if ($show["id"] = $_GET) {
+            $showInfos[] = $show;
+            break;
+        }
+    }
+    return $showInfos;
+}

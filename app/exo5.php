@@ -86,17 +86,6 @@ try {
             <p class="exercice-txt">Si l'identifiant ne correspond à aucune série, afficher un message d'erreur.</p>
             <div class="exercice-sandbox">
                 <?php
-                function diplaySeriesInformation(array $array): array
-                {
-                    $showInfos = [];
-                    foreach ($array as $show) {
-                        if (in_array('exo5.php?serie=' . $show["id"], $_GET)) {
-                            $showInfos [] = $show;
-                        }
-                    }
-                    return $showInfos;
-                }
-
                 var_dump(diplaySeriesInformation($series));
                 ?>
             </div>
